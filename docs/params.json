@@ -1,6 +1,0 @@
-{
-  "name": "LanikSJ ZSH Theme",
-  "tagline": "",
-  "body": "-   [Description](#description)\r\n-   [Install](#install)\r\n-   [Bugs](#bugs)\r\n-   [License](#license)\r\n-   [Donate](#donate)\r\n\r\n## Description\r\n\r\nZSH Theme based on the great [ys theme](http://ysmood.org/wp/2013/03/my-ys-terminal-theme/) and [Honukai ZSH Theme](https://github.com/oskarkrawczyk/honukai-iterm-zsh).\r\n\r\n##  Screenshot\r\n\r\n![Screenshot](https://github.com/LanikSJ/laniksj-zsh-theme/raw/main/screenshot.png)\r\n\r\n## Install\r\n\r\nFor Oh My ZSH:\r\n        git clone --depth=1 https://github.com/LanikSJ/laniksj-zsh-theme.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/laniksj-zsh-theme\r\nor\r\ngit clone --depth=1 git@github.com:LanikSJ/laniksj-zsh-theme.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/laniksj-zsh-theme\r\n\r\n## Bugs\r\n\r\nSet `ZSH_THEME=\"laniksj-zsh-theme/laniksj\"` in `~/.zshrc` to activate.\r\n\r\nPlease report any bugs or issues you find. Thanks!\r\n\r\n## License\r\n\r\n[![MIT License](https://img.shields.io/badge/license-MIT-blue)](https://en.wikipedia.org/wiki/MIT_License)\r\n\r\n## Donate\r\n\r\n[![Patreon](https://img.shields.io/badge/patreon-donate-red.svg)](https://www.patreon.com/laniksj/overview)\r\n",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}
