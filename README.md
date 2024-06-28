@@ -8,6 +8,10 @@
 -   [Description](#description)
 -   [Screenshot](#screenshot)
 -   [Install](#install)
+-   [K8s Support](#k8s-support)
+    -   [Requirements](#requirements)
+    -   [Enable](#enable)
+    -   [Disable](#disable) 
 -   [Bugs](#bugs)
 -   [License](#license)
 -   [Donate](#donate)
@@ -31,6 +35,24 @@ git clone --depth=1 git@github.com:LanikSJ/laniksj-zsh-theme.git ${ZSH_CUSTOM:-$
 ```
 
 Set `ZSH_THEME="laniksj-zsh-theme/laniksj"` in `~/.zshrc` to activate.
+
+## K8s Support
+
+### Requirements
+
+- kubectl
+- kubectx
+- kubens
+
+### Enable
+
+- By setting a variable `export KUBE-PS1-ENABLED=on` in `~/.zshrc`.
+- By using `kubeon` command in your CLI.
+
+### Disable
+
+- By setting a variable `export KUBE-PS1-ENABLED=off` in `~/.zshrc`.
+- By Using `kubeoff` command in your CLI.
 
 ## Bugs
 
