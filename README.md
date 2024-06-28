@@ -40,23 +40,35 @@ git clone --depth=1 git@github.com:LanikSJ/laniksj-zsh-theme.git ${ZSH_CUSTOM:-$
 
 Set `ZSH_THEME="laniksj-zsh-theme/laniksj"` in `~/.zshrc` to activate.
 
+A reload of your SHELL is **required** for any changes to this theme.
+
+- `source ~/.zshrc`
+- `omz reload`
+- `exec zsh`
+
 ## K8s Support
 
 ### Requirements
 
-- kubectl
-- kubectx
-- kubens
+- [kubectl](https://formulae.brew.sh/formula/kubernetes-cli)
+- [kubectx](https://formulae.brew.sh/formula/kubectx)
+- [kubens](https://formulae.brew.sh/formula/kubectx)
+
+Install dependencies with 🍻 [Homebrew](https://brew.sh):
+
+```bash
+brew install kubectx
+```
 
 ### Enable
 
-- By setting a variable `export KUBE-PS1-ENABLED=on` in `~/.zshrc` and reloading your shell.
-- By using `kubeon` command in your CLI.
+- Setting a variable `export KUBE-PS1-ENABLED=on` in `~/.zshrc` to activate.
+- Using `kubeon` command in your CLI.
 
 ### Disable
 
-- By setting a variable `export KUBE-PS1-ENABLED=off` in `~/.zshrc` and reloading your shell.
-- By Using `kubeoff` command in your CLI.
+- Setting a variable `export KUBE-PS1-ENABLED=off` in `~/.zshrc` to activate.
+- Using `kubeoff` command in your CLI.
 
 ## Bugs
 
