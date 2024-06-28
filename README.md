@@ -18,7 +18,7 @@
 
 ## Description
 
-ZSH Theme based on the great [ys theme](http://ysmood.org/wp/2013/03/my-ys-terminal-theme/) and [Honukai ZSH Theme](https://github.com/oskarkrawczyk/honukai-iterm-zsh).
+ZSH Theme based on the great [ys theme](http://ysmood.org/wp/2013/03/my-ys-terminal-theme/), [Honukai ZSH Theme](https://github.com/oskarkrawczyk/honukai-iterm-zsh) and [K8s Prompt](https://github.com/jonmosco/kube-ps1)
 
 ## Screenshot
 
@@ -50,12 +50,12 @@ Set `ZSH_THEME="laniksj-zsh-theme/laniksj"` in `~/.zshrc` to activate.
 
 ### Enable
 
-- By setting a variable `export KUBE-PS1-ENABLED=on` in `~/.zshrc`.
+- By setting a variable `export KUBE-PS1-ENABLED=on` in `~/.zshrc` and reloading your shell.
 - By using `kubeon` command in your CLI.
 
 ### Disable
 
-- By setting a variable `export KUBE-PS1-ENABLED=off` in `~/.zshrc`.
+- By setting a variable `export KUBE-PS1-ENABLED=off` in `~/.zshrc` and reloading your shell.
 - By Using `kubeoff` command in your CLI.
 
 ## Bugs
