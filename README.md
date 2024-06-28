@@ -54,7 +54,7 @@ A reload of your SHELL is **required** for any changes to this theme.
 - [kubectx](https://formulae.brew.sh/formula/kubectx)
 - [kubens](https://formulae.brew.sh/formula/kubectx)
 
-Install dependencies with 🍻 [Homebrew](https://brew.sh): 
+Install dependencies with 🍻 [Homebrew](https://brew.sh):
 
 ```bash
 brew install kubectx
