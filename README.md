@@ -18,7 +18,7 @@
 
 ## Description
 
-ZSH Theme based on the great [ys theme](http://ysmood.org/wp/2013/03/my-ys-terminal-theme/) and [Honukai ZSH Theme](https://github.com/oskarkrawczyk/honukai-iterm-zsh).
+ZSH Theme based on the great [ys theme](http://ysmood.org/wp/2013/03/my-ys-terminal-theme/), [Honukai ZSH Theme](https://github.com/oskarkrawczyk/honukai-iterm-zsh) and [K8s Prompt](https://github.com/jonmosco/kube-ps1)
 
 ## Screenshot
 
