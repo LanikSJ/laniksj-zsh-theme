@@ -50,12 +50,12 @@ Set `ZSH_THEME="laniksj-zsh-theme/laniksj"` in `~/.zshrc` to activate.
 
 ### Enable
 
-- By setting a variable `export KUBE-PS1-ENABLED=on` in `~/.zshrc`.
+- By setting a variable `export KUBE-PS1-ENABLED=on` in `~/.zshrc` and reloading your shell.
 - By using `kubeon` command in your CLI.
 
 ### Disable
 
-- By setting a variable `export KUBE-PS1-ENABLED=off` in `~/.zshrc`.
+- By setting a variable `export KUBE-PS1-ENABLED=off` in `~/.zshrc` and reloading your shell.
 - By Using `kubeoff` command in your CLI.
 
 ## Bugs
