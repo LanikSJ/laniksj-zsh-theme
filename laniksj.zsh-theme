@@ -15,7 +15,7 @@ kubeon() {
 %{$fg[cyan]%}%n \
 %{$fg[green]%}$(hostname) \
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
-${fg[red]%} ${ctx}:${namespace}${git_info}   
+${fg[red]%} ${ctx}:${namespace}${git_info}
 %{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 }
 
