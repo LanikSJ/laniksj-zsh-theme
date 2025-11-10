@@ -44,7 +44,13 @@ git clone --depth=1 git@github.com:LanikSJ/laniksj-zsh-theme.git ${ZSH_CUSTOM:-$
 
 Set `ZSH_THEME="laniksj-zsh-theme/laniksj"` in `~/.zshrc` to activate.
 
-A reload of your SHELL is **required** for any changes to this theme.
+or using [zinit](https://github.com/zdharma-continuum/zinit)
+
+```bash
+zinit light laniksj/laniksj-zsh-theme
+```
+
+A reload of your SHELL is **required** for any changes to take affect.
 
 - `source ~/.zshrc`
 - `omz reload`
