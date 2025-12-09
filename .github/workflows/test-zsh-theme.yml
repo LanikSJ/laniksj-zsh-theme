@@ -50,12 +50,11 @@ jobs:
     - name: Test ZSH Theme Loading Without kubectl
       run: |
         zsh --version
-        cd LanikSJ/zsh-theme
 
         # Start ZSH with theme
         zsh -c '
         echo "Testing theme loading..."
-        source laniksj.zsh-theme
+        source LanikSJ/zsh-theme/laniksj.zsh-theme
         echo "Theme loaded successfully"
 
         # Test kubeoff (default state)
@@ -74,11 +73,9 @@ jobs:
 
     - name: Test ZSH Theme With kubectl
       run: |
-        cd LanikSJ/zsh-theme
-
         timeout 30s zsh -c '
         echo "Testing with kubectl if available..."
-        source laniksj.zsh-theme
+        source LanikSJ/zsh-theme/laniksj.zsh-theme
 
         if command -v kubectl >/dev/null 2>&1; then
           echo "kubectl found - testing with kubernetes enabled"
@@ -107,11 +104,9 @@ jobs:
 
     - name: Test Error Handling
       run: |
-        cd LanikSJ/zsh-theme
-
         zsh -c '
         echo "Testing error handling..."
-        source laniksj.zsh-theme
+        source LanikSJ/zsh-theme/laniksj.zsh-theme
 
         # Remove kubectl if it exists
         if command -v kubectl >/dev/null 2>&1; then
