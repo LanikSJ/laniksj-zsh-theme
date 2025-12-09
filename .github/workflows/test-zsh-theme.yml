@@ -9,8 +9,6 @@ on:
       - '*.zsh-theme'
   pull_request:
     branches: [ main, master ]
-    # paths:
-    #   - '*.zsh-theme'
   workflow_dispatch:
 
 jobs:
@@ -108,6 +106,8 @@ jobs:
       run: |
         zsh -c '
         echo "Testing with kubectl if available..."
+        echo "Working directory: $(pwd)"
+        echo "Files in current dir: $(ls -la)"
         source LanikSJ/zsh-theme/laniksj.zsh-theme
 
         if command -v kubectl >/dev/null 2>&1; then
