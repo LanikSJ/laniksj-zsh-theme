@@ -71,9 +71,42 @@ jobs:
         echo "All basic tests passed!"
         '
 
-    - name: Test ZSH Theme With kubectl
+    - name: Test ZSH Theme With kubectl (Ubuntu)
+      if: runner.os == 'Linux'
       run: |
         timeout 30s zsh -c '
+        echo "Testing with kubectl if available..."
+        source LanikSJ/zsh-theme/laniksj.zsh-theme
+
+        if command -v kubectl >/dev/null 2>&1; then
+          echo "kubectl found - testing with kubernetes enabled"
+
+          # Create a test kubeconfig (in-memory only)
+          export KUBECONFIG=/tmp/test-kubeconfig
+          kubectl config set-context test-context --cluster=test-cluster --user=test-user
+          kubectl config use-context test-context
+
+          # Test kubeon with kubectl
+          kubeon
+
+          # Check if context is detected
+          if [[ $KUBE_PS1_ENABLED == "on" ]]; then
+            echo "Kubernetes prompt enabled successfully"
+          else
+            echo "ERROR: Kubernetes prompt not enabled"
+            exit 1
+          fi
+
+          echo "Kubernetes tests passed!"
+        else
+          echo "kubectl not available - skipping kubectl-specific tests"
+        fi
+        '
+
+    - name: Test ZSH Theme With kubectl (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        zsh -c '
         echo "Testing with kubectl if available..."
         source LanikSJ/zsh-theme/laniksj.zsh-theme
 
