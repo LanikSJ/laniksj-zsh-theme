@@ -52,7 +52,7 @@ jobs:
         # Start ZSH with theme
         zsh -c '
         echo "Testing theme loading..."
-        source LanikSJ/zsh-theme/laniksj.zsh-theme
+        source ./laniksj.zsh-theme
         echo "Theme loaded successfully"
 
         # Test kubeoff (default state)
@@ -74,7 +74,7 @@ jobs:
       run: |
         timeout 30s zsh -c '
         echo "Testing with kubectl if available..."
-        source LanikSJ/zsh-theme/laniksj.zsh-theme
+        source ./laniksj.zsh-theme
 
         if command -v kubectl >/dev/null 2>&1; then
           echo "kubectl found - testing with kubernetes enabled"
@@ -106,9 +106,7 @@ jobs:
       run: |
         zsh -c '
         echo "Testing with kubectl if available..."
-        echo "Working directory: $(pwd)"
-        echo "Files in current dir: $(ls -la)"
-        source LanikSJ/zsh-theme/laniksj.zsh-theme
+        source ./laniksj.zsh-theme
 
         if command -v kubectl >/dev/null 2>&1; then
           echo "kubectl found - testing with kubernetes enabled"
@@ -139,7 +137,7 @@ jobs:
       run: |
         zsh -c '
         echo "Testing error handling..."
-        source LanikSJ/zsh-theme/laniksj.zsh-theme
+        source ./laniksj.zsh-theme
 
         # Remove kubectl if it exists
         if command -v kubectl >/dev/null 2>&1; then
@@ -161,5 +159,5 @@ jobs:
     - name: Verify Theme File Syntax
       run: |
         echo "Checking ZSH syntax..."
-        zsh -n LanikSJ/zsh-theme/laniksj.zsh-theme || { echo "Syntax error in theme file"; exit 1; }
+        zsh -n ./laniksj.zsh-theme || { echo "Syntax error in theme file"; exit 1; }
         echo "Theme syntax is valid"
