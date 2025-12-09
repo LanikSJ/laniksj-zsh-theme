@@ -1,4 +1,6 @@
 name: Test ZSH Theme
+permissions:
+  contents: read
 
 on:
   push:
