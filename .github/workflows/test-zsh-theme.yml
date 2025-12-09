@@ -11,6 +11,7 @@ on:
     branches: [ main, master ]
     paths:
       - '*.zsh-theme'
+  workflow_dispatch:
 
 jobs:
   test-zsh-theme:
