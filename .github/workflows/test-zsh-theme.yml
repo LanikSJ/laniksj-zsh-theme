@@ -9,8 +9,8 @@ on:
       - '*.zsh-theme'
   pull_request:
     branches: [ main, master ]
-    paths:
-      - '*.zsh-theme'
+    # paths:
+    #   - '*.zsh-theme'
   workflow_dispatch:
 
 jobs:
