@@ -1,0 +1,134 @@
+name: Test ZSH Theme
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '*.zsh-theme'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '*.zsh-theme'
+
+jobs:
+  test-zsh-theme:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up ZSH (Ubuntu)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y zsh
+
+    - name: Set up ZSH (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew install zsh
+
+    - name: Set up kubectl (optional, theme should work without it)
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'v1.28.0'
+      continue-on-error: true
+
+    - name: Install oh-my-zsh for git prompt functionality
+      run: |
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+        echo 'export PATH="$HOME/.oh-my-zsh/bin:$PATH"' >> ~/.bashrc
+
+    - name: Test ZSH Theme Loading Without kubectl
+      run: |
+        zsh --version
+        cd LanikSJ/zsh-theme
+
+        # Start ZSH with theme
+        zsh -c '
+        echo "Testing theme loading..."
+        source laniksj.zsh-theme
+        echo "Theme loaded successfully"
+
+        # Test kubeoff (default state)
+        echo "Testing kubeoff..."
+        echo "PROMPT before: $PROMPT" | head -c 100
+        kubeoff
+        echo "Prompt set to kubeoff"
+
+        # Test kubeon (should work even without kubectl)
+        echo "Testing kubeon..."
+        kubeon
+        echo "Prompt set to kubeon"
+
+        echo "All basic tests passed!"
+        '
+
+    - name: Test ZSH Theme With kubectl
+      run: |
+        cd LanikSJ/zsh-theme
+
+        timeout 30s zsh -c '
+        echo "Testing with kubectl if available..."
+        source laniksj.zsh-theme
+
+        if command -v kubectl >/dev/null 2>&1; then
+          echo "kubectl found - testing with kubernetes enabled"
+
+          # Create a test kubeconfig (in-memory only)
+          export KUBECONFIG=/tmp/test-kubeconfig
+          kubectl config set-context test-context --cluster=test-cluster --user=test-user
+          kubectl config use-context test-context
+
+          # Test kubeon with kubectl
+          kubeon
+
+          # Check if context is detected
+          if [[ $KUBE_PS1_ENABLED == "on" ]]; then
+            echo "Kubernetes prompt enabled successfully"
+          else
+            echo "ERROR: Kubernetes prompt not enabled"
+            exit 1
+          fi
+
+          echo "Kubernetes tests passed!"
+        else
+          echo "kubectl not available - skipping kubectl-specific tests"
+        fi
+        '
+
+    - name: Test Error Handling
+      run: |
+        cd LanikSJ/zsh-theme
+
+        zsh -c '
+        echo "Testing error handling..."
+        source laniksj.zsh-theme
+
+        # Remove kubectl if it exists
+        if command -v kubectl >/dev/null 2>&1; then
+          echo "kubectl found - removing temporarily"
+          mv $(which kubectl) $(which kubectl).backup 2>/dev/null || true
+        fi
+
+        # Test that theme works without kubectl
+        kubeon
+        echo "Theme works without kubectl"
+
+        kubeoff
+        echo "Theme functions work without kubectl"
+
+        # Restore kubectl
+        mv $(which kubectl).backup $(which kubectl) 2>/dev/null || true
+        '
+
+    - name: Verify Theme File Syntax
+      run: |
+        echo "Checking ZSH syntax..."
+        zsh -n LanikSJ/zsh-theme/laniksj.zsh-theme || { echo "Syntax error in theme file"; exit 1; }
+        echo "Theme syntax is valid"
