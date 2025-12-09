@@ -9,6 +9,8 @@ on:
       - '*.zsh-theme'
   pull_request:
     branches: [ main, master ]
+    paths:
+      - '*.zsh-theme'
   workflow_dispatch:
 
 jobs:
@@ -20,8 +22,8 @@ jobs:
         os: [ubuntu-latest, macos-latest]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
     - name: Set up ZSH (Ubuntu)
       if: runner.os == 'Linux'
@@ -34,13 +36,13 @@ jobs:
       run: |
         brew install zsh
 
-    - name: Set up kubectl (optional, theme should work without it)
-      uses: azure/setup-kubectl@v3
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@776406bce94f63e41d621b960d78ee25c8b76ede # v4.0.1
       with:
         version: 'v1.28.0'
       continue-on-error: true
 
-    - name: Install oh-my-zsh for git prompt functionality
+    - name: Install oh-my-zsh for Git Prompt Functionality
       run: |
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
         echo 'export PATH="$HOME/.oh-my-zsh/bin:$PATH"' >> ~/.bashrc
