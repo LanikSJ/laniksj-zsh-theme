@@ -20,6 +20,8 @@
 
 ## 📝 Description
 
+[![Test ZSH Theme](https://github.com/LanikSJ/laniksj-zsh-theme/actions/workflows/test-zsh-theme.yml/badge.svg)](https://github.com/LanikSJ/laniksj-zsh-theme/actions/workflows/test-zsh-theme.yml)
+
 ZSH Theme based on the great [ys theme](http://ysmood.org/wp/2013/03/my-ys-terminal-theme/),
 [Honukai ZSH Theme](https://github.com/oskarkrawczyk/honukai-iterm-zsh) and
 [K8s Prompt](https://github.com/jonmosco/kube-ps1)
