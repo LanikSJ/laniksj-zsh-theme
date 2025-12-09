@@ -2,25 +2,31 @@
 # Honukai ZSH Theme: https://github.com/oskarkrawczyk/honukai-iterm-zsh
 # and K8s Prompt: https://github.com/jonmosco/kube-ps1
 
+# Kubernetes prompt function
+kube_ps1_prompt() {
+    [[ -n "${prompt_kube_context}" ]] && echo "${prompt_kube_context}:${prompt_kube_namespace}"
+}
+
 # Kubernetes prompt functions
 kubeon() {
     KUBE_PS1_ENABLED=on
-    PROMPT="%{$terminfo[bold]$fg[white]%}%* ${reset_color}% \
+    PROMPT=$'\n'"%{$terminfo[bold]$fg[white]%}%* %{$reset_color%} \
 %{$fg[cyan]%}%n \
 %{$fg[green]%}%m \
-%{$terminfo[bold]$fg[yellow]%}%~${reset_color}% \
-%{$fg[red]%}\${prompt_kube_context}:\${prompt_kube_namespace}%{${reset_color}%}%{${fg[cyan]}%}\$(git_prompt_info)%{${reset_color}%}
-%{$terminfo[bold]$fg[red]%}→ ${reset_color}%"
+%{$terminfo[bold]$fg[yellow]%}%~
+%{$reset_color%} \
+%{$fg[red]%}\$(kube_ps1_prompt)%{$reset_color%}%{$fg[cyan]%}\$(git_prompt_info)%{$reset_color%}
+%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 }
 
 kubeoff() {
     KUBE_PS1_ENABLED=off
-    PROMPT="%{$terminfo[bold]$fg[white]%}%* ${reset_color}% \
+    PROMPT=$'\n'"%{$terminfo[bold]$fg[white]%}%* %{$reset_color%} \
 %{$fg[cyan]%}%n \
 %{$fg[green]%}%m \
-%{$terminfo[bold]$fg[yellow]%}%~${reset_color}% \
-%{${fg[cyan]}%}\$(git_prompt_info)%{${reset_color}%}
-%{$terminfo[bold]$fg[red]%}→ ${reset_color}%"
+%{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%} \
+%{$fg[cyan]%}\$(git_prompt_info)%{$reset_color%}
+%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 }
 
 # VCS configuration
