@@ -72,6 +72,33 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="${YS_VCS_PROMPT_SUFFIX}"
 ZSH_THEME_GIT_PROMPT_DIRTY="${YS_VCS_PROMPT_DIRTY}"
 ZSH_THEME_GIT_PROMPT_CLEAN="${YS_VCS_PROMPT_CLEAN}"
 
+# Git prompt functions
+git_prompt_info() {
+    local ref
+    ref=$(git symbolic-ref HEAD 2>/dev/null) || \
+    ref=$(git rev-parse --short HEAD 2>/dev/null) || return
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+parse_git_dirty() {
+    local STATUS=''
+    local -a FLAGS
+    FLAGS=('--porcelain')
+    if [[ "$(command git config --get oh-my-zsh.hide-dirty)" != "1" ]]; then
+        if [[ $POST_1_7_2_GIT -gt 0 ]]; then
+            FLAGS+='--ignore-submodules=dirty'
+        fi
+        if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
+            FLAGS+='--untracked-files=no'
+        fi
+        STATUS=$(command git status ${FLAGS} 2> /dev/null | tail -n1)
+    fi
+    if [[ -n $STATUS ]]; then
+        echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
+    else
+        echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+    fi
+}
 # Initialize Kubernetes prompt variables
 prompt_kube_context=""
 prompt_kube_namespace=""
