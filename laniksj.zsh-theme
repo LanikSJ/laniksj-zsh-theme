@@ -37,6 +37,15 @@ kube_ps1_prompt() {
     [[ -n "${prompt_kube_context}" ]] && echo "${prompt_kube_context}:${prompt_kube_namespace}"
 }
 
+# Direnv / envrc prompt: show when .envrc is active (e.g. venv name or DIRENV_PROMPT from .envrc)
+direnv_ps1_prompt() {
+    if [[ -n "${DIRENV_PROMPT}" ]]; then
+        echo "${DIRENV_PROMPT} "
+    elif [[ -n "${VIRTUAL_ENV}" ]]; then
+        echo "${VIRTUAL_ENV:t} "
+    fi
+}
+
 # Kubernetes prompt functions
 kubeon() {
     KUBE_PS1_ENABLED=on
@@ -45,7 +54,7 @@ kubeon() {
 %{$fg[green]%}%m \
 %{$terminfo[bold]$fg[yellow]%}%~
 %{$reset_color%} \
-%{$fg[red]%}\$(kube_ps1_prompt)%{$reset_color%}%{$fg[cyan]%}\$(git_prompt)%{$reset_color%}
+%{$fg[magenta]%}\$(direnv_ps1_prompt)%{$reset_color%}%{$fg[red]%}\$(kube_ps1_prompt)%{$reset_color%}%{$fg[cyan]%}\$(git_prompt)%{$reset_color%}
 %{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 }
 
@@ -55,7 +64,7 @@ kubeoff() {
 %{$fg[cyan]%}%n \
 %{$fg[green]%}%m \
 %{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%} \
-%{$fg[cyan]%}\$(git_prompt)%{$reset_color%}
+%{$fg[magenta]%}\$(direnv_ps1_prompt)%{$reset_color%}%{$fg[cyan]%}\$(git_prompt)%{$reset_color%}
 %{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 }
 
