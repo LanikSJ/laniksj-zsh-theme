@@ -1,4 +1,4 @@
-# AI Rules & Project Standards for zsh-theme
+# Agent Rules & Project Standards for zsh-theme
 
 ## Repository Overview
 
