@@ -47,6 +47,39 @@ zsh-theme contains custom themes and prompt configurations for the Zsh shell.
 
 ## Development Guidelines
 
+### Commit Message Convention
+
+- Use the conventional commit format: `type(scope): description`
+- Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`
+- Commit descriptions should be a bullet list of changes made
+- Example:
+
+  ```text
+  docs(AGENTS.md): update agent rules for cloudflare-worker project
+
+  - this file had the wrong data from a totally different repository
+  ```
+
+#### Commit Types
+
+- **feat**: A new feature
+- **fix**: A bug fix
+- **docs**: Documentation only changes
+- **style**: Formatting (white-space, etc)
+- **refactor**: Code change that neither fixes a bug nor adds a feature
+- **perf**: Performance improvement
+- **test**: Adding or correcting tests
+- **chore**: Changes to build process or auxiliary tools
+
+#### Scope Guidelines
+
+- **action**: main action logic
+- **docs**: documentation
+- **tests**: test-related
+- **ci**: CI/CD configuration
+- **deps**: dependency updates
+- **zsh-theme**: zsh-theme specific
+
 ### When Making Changes
 
 - Preserve existing functionality unless explicitly asked to change it
