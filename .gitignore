@@ -1,0 +1,62 @@
+# Global .agents folder (using global .agents configuration)
+.agents/
+
+# Zsh & Shell Artifacts
+*.zwc
+.zcompdump*
+.zsh_history
+.bash_history
+
+# Jekyll (GitHub Pages)
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
+# Node.js & Linters
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating Systems
+# macOS
+.DS_Store
+Icon
+._*
+
+# Windows
+Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Editors and IDEs
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains
+.idea/
+
+# Vim
+[._]*.s[a-v][a-z]
+!*.svg
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+
+# Generic Temporary Files and Logs
+*.log
+*.tmp
+*.bak
+tmp/
